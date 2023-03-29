@@ -1,0 +1,17 @@
+{
+  "name": "servicio_txt",
+  "version": "1.0.0",
+  "description": "Servicio RC Ingenieros SAC  ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./app/index.ts",
+    "build": ""
+  },
+  "author": "Diego nalvarte",
+  "license": "MIT",
+  "dependencies": {
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.2"
+  }
+}
