@@ -48,7 +48,8 @@ const ProcesarArchivo = (archivoPath: string) => {
         MontoPercepcion: 0,
         ruc: "",
         idSucursal: 1,
-        Estado: 1
+        Estado: 1,
+        leyenda: ""
     };
 
     for (let i = 0; i < lines.length; i++) {
@@ -75,9 +76,8 @@ const ProcesarArchivo = (archivoPath: string) => {
                 venta.TotalDocumento = parseFloat(fields[20]);
                 venta.MontoExcento = parseFloat(fields[21]);
                 venta.MontoGratuito = parseFloat(fields[22]);
-                // venta.direccionCliente = fields[15];
-                // venta.tipoMoneda = fields[16];
-                // venta.baseImponible = parseFloat(fields[17]);
+                venta.leyenda = fields[23];
+                venta.Porcentaje = parseFloat(fields[24]);
                 // venta.impuesto = parseFloat(fields[18]);
                 // venta.totalDescuento = parseFloat(fields[19]);
                 // venta.totalRecibo = parseFloat(fields[20]);
