@@ -1,7 +1,15 @@
 import fs from 'fs';
+import { v4 as uuidv4 } from 'uuid';
 
-export const MoverDocumento = (archivoPath: string, archivo: string) => {
-    fs.rename(archivoPath, `${__dirname}/sent/${archivo}`, (err) => {
+export const MoverDocumento = (archivoPath: string | undefined, archivo: string | undefined) => {
+
+    const id = uuidv4();
+
+    if (archivoPath == undefined || archivo == undefined) {
+        return console.log("El nombre de archivo no se a encontrado posible error procesarArchivo");
+    }
+
+    fs.rename(archivoPath, `${__dirname}/sent/${id}-${archivo}`, (err) => {
         if (err) {
             return console.error(err);
         }

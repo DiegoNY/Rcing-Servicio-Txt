@@ -12,7 +12,7 @@ export type Item = {
     Lote: string
     FechaVcto: string
     Labora: string
-    Patilla: null | string
+    Pastilla: null | string
     Palote: null | string
 }
 
@@ -23,6 +23,7 @@ export type Cuota = {
 }
 
 export type Documento = {
+    CORRELATIV: string
     items: Item[]
     cuotas: Cuota[]
     cliente: string
@@ -66,4 +67,10 @@ export type Documento = {
     Vendedor: string
     archivoPath?: string
     archivo?: string
+}
+
+export type RespuestaServicio = {
+    estatus: number
+    Message: string
+    documento: string
 }

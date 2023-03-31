@@ -2,6 +2,10 @@ import fs from 'fs';
 import { idSucursal, ruc } from './config/config';
 import { Documento } from './types';
 
+const validarInformacionEnvio = (data: string) => {
+    
+}
+
 export const ProcesarArchivo = (archivoPath: string) => {
     const data = fs.readFileSync(archivoPath, 'utf8');
     const lines = data.split('\n');
@@ -47,7 +51,8 @@ export const ProcesarArchivo = (archivoPath: string) => {
         idSucursal: idSucursal,
         Estado: 1,
         leyenda: "",
-        Vendedor: ""
+        Vendedor: "",
+        CORRELATIV: "",
     };
 
     for (let i = 0; i < lines.length; i++) {
@@ -58,6 +63,7 @@ export const ProcesarArchivo = (archivoPath: string) => {
             case '01':
                 venta.ruc = ruc;
                 venta.TipoDoc = fields[7];
+                venta.CORRELATIV = `${fields[8]}-${fields[9]}`;
                 venta.CodVenta = `${fields[8]}-${fields[9]}`;
                 venta.Serie = fields[8];
                 venta.Correlativo = fields[9];
@@ -96,10 +102,10 @@ export const ProcesarArchivo = (archivoPath: string) => {
                     Lote: fields[11],
                     FechaVcto: fields[12],
                     Labora: fields[13],
-                    Patilla: null,
+                    Pastilla: null,
                     Palote: null
                 };
-                console.log(items);
+
                 venta.items.push(items);
                 break;
             case '04':
