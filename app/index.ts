@@ -15,7 +15,7 @@ const LimpiarErrores = () => {
 
 const ValidarInformacion = (data: Documento[]) => {
     mockDocumentosErrores.map(docError => {
-        const docIndex = data.findIndex(docData => docData.CodVenta == docError.CodVenta)
+        const docIndex = data.findIndex(docData => docData?.CodVenta == docError?.CodVenta)
         data.splice(docIndex, 1);
     })
     return data
@@ -27,25 +27,29 @@ setInterval(() => {
             const dataEnvio = ValidarInformacion(data);
             mock = dataEnvio;
 
-            if (mock.length != 0) {
+            if (dataEnvio.length != 0) {
                 console.log("Ejecutando")
-                Declarar(data)
+                Declarar(dataEnvio)
                     .then((rta: any) => {
                         const { data } = rta;
                         console.log(data);
 
                         data.map((documento: RespuestaServicio) => {
 
-                            const indexDoc = mock.findIndex(documentoMock => documentoMock.CodVenta == documento.documento)
+                            const indexDoc = dataEnvio.findIndex(documentoMock => `${documentoMock.CodVenta}-${documentoMock.TipoDoc}` == documento.documento)
 
-                            if (documento.estatus == 1 || documento.estatus == 2) {
+                            if (documento.estatus != 1) {
+                                console.log(documento);
+                            }
+
+                            if (documento.estatus == 1) {
                                 console.log(`El documento ${documento.documento} sera movido procesado exitosamente`)
-                                const documentoMover = mock[indexDoc];
+                                const documentoMover = dataEnvio[indexDoc];
 
                                 MoverDocumento(documentoMover.archivoPath, documentoMover.archivo);
                             } else {
                                 console.log(`El documento ${documento.documento} contiene errores`)
-                                mockDocumentosErrores.push(mock[indexDoc])
+                                mockDocumentosErrores.push(dataEnvio[indexDoc])
                             }
 
                         })

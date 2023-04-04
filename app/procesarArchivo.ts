@@ -3,7 +3,7 @@ import { idSucursal, ruc } from './config/config';
 import { Documento } from './types';
 
 const validarInformacionEnvio = (data: string) => {
-    
+
 }
 
 export const ProcesarArchivo = (archivoPath: string) => {
@@ -53,6 +53,7 @@ export const ProcesarArchivo = (archivoPath: string) => {
         leyenda: "",
         Vendedor: "",
         CORRELATIV: "",
+        placa: null
     };
 
     for (let i = 0; i < lines.length; i++) {

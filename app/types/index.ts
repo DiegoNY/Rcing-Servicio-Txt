@@ -67,6 +67,7 @@ export type Documento = {
     Vendedor: string
     archivoPath?: string
     archivo?: string
+    placa: null | string
 }
 
 export type RespuestaServicio = {

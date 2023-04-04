@@ -8,4 +8,4 @@ const config = {
     puerto: 3009
 };
 
-export const { carpeta, tiempo, ruc, idSucursal, tiempo_limpiar, puerto } = config;
+export const { carpeta, tiempo, ruc, idSucursal, tiempo_limpiar, puerto } = config
