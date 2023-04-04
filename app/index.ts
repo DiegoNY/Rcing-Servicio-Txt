@@ -37,11 +37,7 @@ setInterval(() => {
                         data.map((documento: RespuestaServicio) => {
 
                             const indexDoc = dataEnvio.findIndex(documentoMock => `${documentoMock.CodVenta}-${documentoMock.TipoDoc}` == documento.documento)
-
-                            if (documento.estatus != 1) {
-                                console.log(documento);
-                            }
-
+                            
                             if (documento.estatus == 1) {
                                 console.log(`El documento ${documento.documento} sera movido procesado exitosamente`)
                                 const documentoMover = dataEnvio[indexDoc];
